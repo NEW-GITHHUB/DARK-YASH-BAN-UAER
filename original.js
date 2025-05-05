@@ -478,7 +478,7 @@ return await conn.sendMessage(from, reactionMessage)
 //fetch data from api  
 let data = await fetchJson(`https://www.dark-yasiya-api.site/download/fbdl2?url=${q}`)
 
-let desc = `*┠─❲ 🧛 MANIYA-X-MD🧛 ❳─┨*
+let desc = `*┠─❲ 🧛 MANI-X-MD🧛 ❳─┨*
 
     *🧨 FB DOWNLOADER 🧨*
 
@@ -502,10 +502,9 @@ let desc = `*┠─❲ 🧛 MANIYA-X-MD🧛 ❳─┨*
 
 //==========NON BUTTON MSG SEND==========
 
-
-sentMsg = await conn.sendMessage(from,{text: desc}, { quoted: mek });
+const sentMsg = await conn.sendMessage(from,{image:{url: "https://i.ibb.co/tPqQz94y/r3-Lczj-LD2381.jpg"},caption:desc},{quoted:mek});
 const messageID = sentMsg.key.id; // Save the message ID for later reference
-
+await conn.sendMessage(from, { react: { text: '🔢', key:sentMsg.key }})
 
 // Listen for the user's response
 conn.ev.on('messages.upsert', async (messageUpdate) => {
@@ -831,7 +830,7 @@ let desc = `*┠─❲ 🧛 MANI-X-MD 🧛 ❳─┨*
   1 | *Audio File 🎶*
   2 | *Document File 📁*
   
- *⦁ ᴅᴀʀᴋ-ʏᴀꜱʜ-ᴍᴅ ʙʏ ᴍᴀɴɪ ⦁*
+ *⦁ ᴍᴀɴɪ-x-ᴍᴅ ʙʏ ᴍᴀɴɪ ⦁*
 `
 
 //==========NON BUTTON MSG SEND==========
@@ -996,9 +995,9 @@ let menumsg = `*👋 𝗛𝗘𝗟𝗟𝗢...${pushname}...*
 ┃⦁──────────⦁
 ├ 📥  1 | *DOWNLOAD*
 ├ 🔄  2 | *CONVERT*
-├ 👨‍💻  4 | *OWNER*
-├ 🪀  5 | *GROUP*
-├ 🫅  6 | *MAIN*
+├ 👨‍💻  3 | *OWNER*
+├ 🪀  4 | *GROUP*
+├ 🫅  5 | *MAIN*
 ╰─────────────⦁⦁➤
 
 *💥 Reply the Number you want to select*
@@ -1352,14 +1351,7 @@ if ( isCmd ){
 await conn.readMessages([mek.key]);
 }
 await conn.sendMessage(from, { react: { text: '🔗', key: mek.key } });
-if(!q) {
-setTimeout(async () => {
-await conn.sendMessage(from, { react: { text: '❌', key: mek.key } });
-}, 500);
-const rcc = await conn.sendMessage(from,{text:  "*❌ Please Give Me Image...*" },{quoted:mek})
-const reactionMessage = {react: {text: "❓", key: rcc.key }}
-return await conn.sendMessage(from, reactionMessage)
-}
+
 if(!m.quoted.imageMessage) {
 await conn.sendMessage(m.key.remoteJid, { react: { text: '❌', key: mek.key } })
 const rc = await conn.sendMessage(from,{text:  "*❌ Please Give Me A Image...*" },{quoted:mek})
